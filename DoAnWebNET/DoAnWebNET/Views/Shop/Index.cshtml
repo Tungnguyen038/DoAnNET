@@ -1,0 +1,119 @@
+﻿@model PagedList.IPagedList<ShopOnlineConnection.SanPham>
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@section css
+{
+    <link rel="stylesheet" href="~/Asset/asserts/indexTT.css" />
+    <link rel="stylesheet" href="~/Asset/categorycss/category-pay.css" />
+}
+
+<section>
+    <div class="container">
+        <div class="top row">
+            <p>TRANG CHỦ</p><span>&#8260;</span><p>DANH MỤC</p><span>&#8260;</span><p>ĐẦM NỮ</p>
+        </div>
+        <div class="img-main">
+            <img src="https://file.hstatic.net/200000202027/file/5_style_with_jeans-01_ce87b99f337c4edeb0d4f1f19d17e71c.jpg" alt="">
+        </div>
+        <div class="between row">
+            <div class="left">
+                <div class="price">
+                    <p><b>GIÁ SẢN PHẨM </b><span>&#8210;</span></p>
+                    <form action="/action_page.php">
+                        <input type="checkbox" name="vehicle1" value="duoi500">
+                        <label for="vehicle1"> Dưới 500,000<u>đ</u></label><br><br>
+                        <input type="checkbox" name="vehicle2" value="tren500">
+                        <label for="vehicle2"> 500,000<u>đ</u> - 1,500,000<u>đ</u></label><br><br>
+                        <input type="checkbox" name="vehicle3" value="tren1k" checked>
+                        <label for="vehicle3"> 1,000,000<u>đ</u> - 1,500,000<u>đ</u></label><br><br>
+                        <input type="checkbox" name="vehicle4" value="tren2k" checked>
+                        <label for="vehicle4"> 2,000,000<u>đ</u> - 5,000,000<u>đ</u></label><br><br>
+                        <input type="checkbox" name="vehicle5" value="tren5k" checked>
+                        <label for="vehicle5"> Trên 5,000,000<u>đ</u></label><br>
+                    </form>
+
+                </div>
+
+                <div class="size">
+                    <p><b>KÍCH THƯỚC</b> <span>&#8210;</span></p>
+                    <div class="so-size">
+                        <span>S</span>
+                        <span>M</span>
+                        <span>L</span>
+                        <span>XL</span>
+                    </div>
+                </div>
+            </div>
+            <div class=" right">
+                <div class="right-top row">
+                    <div class="name">
+                        <h2>Đầm Nữ</h2>
+                    </div>
+                    <div class="name">
+                        <select name="" id="">
+                            <option value="">Sản phẩm nổi bật</option>
+                            <option value="">Giá: Tăng dần</option>
+                            <option value="">Giá: Giảm dần</option>
+                            <option value="">Tên: A-Z</option>
+                            <option value="">Tên: Z-A</option>
+                            <option value="">Cũ nhất</option>
+                            <option value="">Mới nhất</option>
+                            <option value="">Bán chạy nhất</option>
+                            <option value="">Tồn kho: giảm dần</option>
+
+                        </select>
+                    </div>
+                </div>
+                <div class="content row">
+                    @foreach (var item in Model)
+                    {
+                        <a  class="hihihii" href="@Url.Action("Details","Shop", new { id = item.MaSanPham})">
+                            <div class="content-item content-item-active">
+                                <img src="@item.HinhChinh" alt="">
+                                <h1>@item.TenSanPham</h1>
+                                <div class="div" style="display: flex; justify-content: center;margin-top: 10px;">
+                                    <p class="price-sale" style="text-decoration: line-through;margin-right: 10px;">800.000<u>đ</u></p>
+                                    <p>@item.Gia<u>đ</u></p>
+
+                                </div>
+                                <div class="sale-div"> SALE</div>
+                            </div>
+                        </a>
+                    }
+
+
+                </div>
+            </div>
+        </div> -->
+        <!-- endtest -->
+        <div class="row list-inline" style="padding: 0; display: flex; justify-content: center;width: 100%;">
+            <ul class="pagination">
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+
+            </ul>
+
+
+        </div>
+
+    </div>
+
+    </div>
+    <div class="bottom">
+
+    </div>
+    </div>
+</section>
+
+<div class="delete-cart animate__animated animate__fadeInBottomRight">
+    <button class="del-cart">Xóa</button>
+    <button class="edit-cart">sửa</button>
+</div>
+
+<script src="~/Asset/js/home.js"></script>
+
+

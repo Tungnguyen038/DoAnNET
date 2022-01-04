@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "_MainLayout";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thời trang nam Nữ Rountine</title>
+
+
+
+    <link rel="stylesheet" href="~/Asset/asserts/grid.css" />
+    <link rel="stylesheet" href="~/Asset/asserts/base.css" />
+    @*<link rel="stylesheet" href="~/Asset/asserts/indexTT.css" />*@
+    <link rel="stylesheet" href="~/Asset/asserts/responsive.css" />
+    <link rel="stylesheet" href="~/Asset/asserts/cart.css">
+    <link rel="stylesheet" href="~/Asset/fonts/themify-icons/themify-icons.css" />
+    <link rel="icon"
+          type="image/x-icon"
+          href="https://routine.vn/media/favicon/default/output-onlinejpgtools.png" />
+    <link rel="stylesheet"
+          href="./fonts/fontawesome-free-5.15.4-web/css/all.min.css" />
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" />
+    <link href="https://fonts.googleapis.com/css2?family=Rochester&display=swap"
+          rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap"
+          rel="stylesheet" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <script type="text/javascript" src="~/Asset/js/jquery.convform.js"></script>
+
+    <script type="text/javascript" src="~/Asset/js/jquery-1.12.3.min.js"></script>
+    <script type="text/javascript" src="~/Asset/js/jquery.convform.js"></script>
+    <script type="text/javascript" src="~/Asset/js/main.js"></script>
+    @RenderSection("css", false)
+</head>
+
+<body>
+    <span class="loader"></span>
+    <script type="text/javascript">
+        window.addEventListener("load", function () {
+            const loader = document.querySelector('.loader');
+            loader.className += " hidden";
+        })
+    </script>
+
+    <!-- <div class="main"> -->
+    <!-- Thẻ bao bọc trang -->
+    <!-- <div class="page-wrapper1"> -->
+    @*đổ dữ liệu theo kiểu html.patital sau đó chuyển về MvcHtmlString*@
+
+
+    @{
+        var headerpartital = Html.Partial("_Header");
+        headerpartital = new MvcHtmlString(headerpartital.ToString());
+    }
+    @headerpartital
+
+    @RenderBody();
+
+    @*đổ dữ liệu theo kiểu renderpartial*@
+
+    @{ Html.RenderPartial("_Footer"); }
+    <!-- </div> -->
+    <!-- </div> -->
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+
